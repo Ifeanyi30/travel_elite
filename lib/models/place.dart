@@ -16,7 +16,7 @@ class PlaceLocation {
 class Place {
   final String id;
   final String title;
-  final location;
+  final PlaceLocation location;
   final File
       image; // to use the File datatype, import the dart:io dart package.
 

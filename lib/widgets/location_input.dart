@@ -5,7 +5,8 @@ import 'package:travel_elite/helpers/location_helper.dart';
 import 'package:travel_elite/screens/map_screen.dart';
 
 class LocationInput extends StatefulWidget {
-  const LocationInput({Key? key}) : super(key: key);
+  final Function location;
+  const LocationInput({required this.location, Key? key}) : super(key: key);
 
   @override
   _LocationInputState createState() => _LocationInputState();
@@ -46,6 +47,7 @@ class _LocationInputState extends State<LocationInput> {
     setState(() {
       _previewImageUrl = staticMapUrl;
     });
+    widget.location(_locationData.latitude, _locationData.longitude);
   }
 
   Future<void> _selectMap() async {
@@ -59,9 +61,12 @@ class _LocationInputState extends State<LocationInput> {
       ),
     );
 
+    // ignore: unnecessary_null_comparison
     if (selectedLocation == null) {
       return;
     }
+
+    widget.location(selectedLocation.latitude, selectedLocation.longitude);
 
     final staticMapUrl = LocationHelper.genLocationPreviewImage(
       latitude: selectedLocation.latitude,
