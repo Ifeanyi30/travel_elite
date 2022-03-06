@@ -32,7 +32,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Map'),
+        title: const Text('Your Map'),
         actions: [
           if (widget.isSelecting)
             IconButton(
@@ -41,7 +41,7 @@ class _MapScreenState extends State<MapScreen> {
                   : () {
                       Navigator.pop(context, _pickedLocation);
                     },
-              icon: Icon(Icons.check),
+              icon: const Icon(Icons.check),
             )
         ],
       ),
@@ -58,8 +58,9 @@ class _MapScreenState extends State<MapScreen> {
             ? {}
             : {
                 Marker(
-                    markerId: const MarkerId('m1'),
-                    position: _pickedLocation as LatLng),
+                  markerId: const MarkerId('m1'),
+                  position: _pickedLocation as LatLng,
+                ),
               },
       ),
     );

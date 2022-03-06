@@ -63,7 +63,6 @@ class _LocationInputState extends State<LocationInput> {
       return;
     }
 
-    print('my response: ${selectedLocation.latitude}');
     final staticMapUrl = LocationHelper.genLocationPreviewImage(
       latitude: selectedLocation.latitude,
       longitude: selectedLocation.longitude,
