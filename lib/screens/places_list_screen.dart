@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_elite/providers/places.dart';
 import 'package:travel_elite/screens/add_place_screen.dart';
+import 'package:travel_elite/screens/place_detail_screen.dart';
 
 class PlacesListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Your Places'),
+          title: const Text('Your Places'),
           actions: [
             IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, AddPlaceScreen.routeName);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.add,
               ),
             ),
@@ -41,6 +42,11 @@ class PlacesListScreen extends StatelessWidget {
                                 title: Text(places.items[index].title),
                                 subtitle:
                                     Text(places.items[index].location.address),
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, PlaceDetailScreen.routeName,
+                                      arguments: places.items[index].id);
+                                },
                               ),
                             ),
                       child: const Center(
